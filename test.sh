@@ -117,10 +117,10 @@ g_failed_cases=""
 g_summary=" "
 while true
 do
-	if [ -e "inputs/$PROG.$i.in" ] && [ -e "outputs/$PROG.$i.out" ]
+	if [ -e "inputs/in$i.txt" ] && [ -e "outputs/in$i.txt" ]
 	then
 		make_temp
-		./"$PROG" < "inputs/$PROG.$i.in" | head -c 50MB > "$out"
+		./"$PROG" < "inputs/in$i.txt" | head -c 50MB > "$out"
 		status="$?"
 		if [ "$status" -ne "0" ]
 		then
@@ -131,9 +131,9 @@ do
 			then
 				if [ "$PROG" == "exact-space-needed" ] # TODO replace with name of the program as appropriate
 				then
-					diff_count=$(diff "$out" "outputs/$PROG.$i.out" | wc -l)
+					diff_count=$(diff "$out" "outputs/in$i.txt" | wc -l)
 				else
-					diff_count=$(diff -bB "$out" "outputs/$PROG.$i.out" | wc -l)
+					diff_count=$(diff -bB "$out" "outputs/in$i.txt" | wc -l)
 				fi
 				if [ "$diff_count" -ne 0 ]
 				then

@@ -2,7 +2,7 @@
 .PHONY: all clean compile test tidy
 
 SHELL := /bin/bash
-FILES=abcdefg
+FILES=seats
 CC=clang
 LDLIBS=-lm -lcs1010
 CFLAGS=@compile_flags.txt
